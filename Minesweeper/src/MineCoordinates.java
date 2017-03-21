@@ -1,11 +1,15 @@
+import java.util.Random;
 
 public class MineCoordinates {
+	private int x;
+	private int y;
+	private int xPos;
+	private int yPos;
+	Random generator = new Random();
+	 MineCoordinates mine [] = new MineCoordinates[10] ;
 	
-	private double xPos;
-	private double yPos;
 	
-	
-	public MineCoordinates ( double x, double y){
+	public MineCoordinates ( int x, int y){
 		
 		this.xPos= x;
 		this.yPos = y;
@@ -13,25 +17,39 @@ public class MineCoordinates {
 		}
 
 
-	public double getxPos() {
-		return xPos;
+	public int getxPos() {
+		return generator.nextInt(9);
 	}
 
 
-	public void setxPos(double xPos) {
+	public void setxPos(int xPos) {
 		this.xPos = xPos;
 	}
 
 
-	public double getyPos() {
-		return yPos;
+	public int getyPos() {
+		return generator.nextInt(9);
 	}
 
 
-	public void setyPos(double yPos) {
+	public void setyPos(int yPos) {
 		this.yPos = yPos;
 	}
 	
+	public MineCoordinates genCoordinates () {
+		
+		return new MineCoordinates(getxPos(), getyPos());
+
+	}
 	
+	public void assignCoordinates (){
+		
+		for (int i = 0; i < 10; i++) {
+			
+			mine[i] = genCoordinates();
+			System.out.println("("+mine[i].xPos+","+mine[i].yPos+")");
+		}
+		
+	}
 
 }
