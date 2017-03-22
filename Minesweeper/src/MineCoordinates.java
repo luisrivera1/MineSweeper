@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MineCoordinates {
@@ -6,15 +7,22 @@ public class MineCoordinates {
 	private int xPos;
 	private int yPos;
 	Random generator = new Random();
-	 MineCoordinates mine [] = new MineCoordinates[10] ;
+	
+	ArrayList<MineCoordinates> mine = new ArrayList<MineCoordinates>();
 	
 	
-	public MineCoordinates ( int x, int y){
-		
-		this.xPos= x;
-		this.yPos = y;
+	public MineCoordinates (){
+		this.x=0;
+		this.y=0;
 		
 		}
+	
+	public MineCoordinates (int x, int y){
+		this.x=x;
+		this.y=y;
+		
+		}
+	
 
 
 	public int getxPos() {
@@ -42,14 +50,22 @@ public class MineCoordinates {
 
 	}
 	
-	public void assignCoordinates (){
+	public ArrayList<MineCoordinates> coordinates (){
 		
 		for (int i = 0; i < 10; i++) {
 			
-			mine[i] = genCoordinates();
-			System.out.println("("+mine[i].xPos+","+mine[i].yPos+")");
+			mine.add(genCoordinates());
+			//System.out.println("("+mine[i].xPos+","+mine[i].yPos+")");
 		}
+		return mine;	
 		
 	}
 
+	public void compareCoordinates (){
+		
+		
+		
+	}
+	
+	
 }

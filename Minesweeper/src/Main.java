@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -15,8 +16,8 @@ int y = rand.nextInt(9);
 
 		MyPanel myPanel = new MyPanel();
 		myFrame.add(myPanel);
-		MineCoordinates c = new MineCoordinates(x,y);
-		c.assignCoordinates();
+		MineCoordinates c = new MineCoordinates();
+		
 		
 		MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
 		myFrame.addMouseListener(myMouseAdapter);

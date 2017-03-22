@@ -3,12 +3,12 @@ import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 public class MyMouseAdapter extends MouseAdapter {
-	
+	ArrayList<MineCoordinates> mines = new MineCoordinates().coordinates();
 	public void mousePressed(MouseEvent e) {
 		switch (e.getButton()) {
 		case 1:		//Left mouse button
@@ -76,7 +76,27 @@ public class MyMouseAdapter extends MouseAdapter {
 						//Do nothing
 					} else {
 						//Released the mouse button on the same cell where it was pressed
-						
+							
+							boolean state=true; 
+							for(int a=0;a<mines.size();a++) {
+								 //System.out.println("Minas:"+mines.get(a).getxPos()+" , "+mines.get(a).getyPos()); 
+								  if(mines.get(a).getxPos()==gridX && mines.get(a).getyPos()==gridY){
+									  state=false;
+									  System.out.println("Explosion: "+gridX+" , "+gridY);
+									  //break;
+								  }
+							}
+							if(state){
+								//
+							}else{
+								//game over
+								System.out.println("Game Over");
+								
+							}
+								
+							
+							
+							
 							Color newColor = Color.BLACK;
 							
 							
