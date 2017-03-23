@@ -67,47 +67,44 @@ public class MyMouseAdapter extends MouseAdapter {
 				//Had pressed outside
 				//Do nothing
 			} else {
-				if ((gridX == -1) || (gridY == -1)) {
-					//Is releasing outside
-					//Do nothing
-				} else {
-					if ((myPanel.mouseDownGridX != gridX) || (myPanel.mouseDownGridY != gridY)) {
-						//Released the mouse button on a different cell where it was pressed
-						//Do nothing
-					} else {
-						//Released the mouse button on the same cell where it was pressed
-							
+				if ((gridX == -1) || (gridY == -1)) { //outside does nothing
+				} else { //inside does:
+					
+					if ((myPanel.mouseDownGridX != gridX) || (myPanel.mouseDownGridY != gridY)) { //release on other cell
+					} else {//Released the mouse button on the same cell where it was pressed
+						
+					//functional code begins here
+						
 							boolean state=true; 
 							for(int a=0;a<mines.size();a++) {
-								 //System.out.println("Minas:"+mines.get(a).getxPos()+" , "+mines.get(a).getyPos()); 
+								 
 								  if(mines.get(a).getxPos()==gridX && mines.get(a).getyPos()==gridY){
+									  Color newColor = Color.BLACK;
+										myPanel.colorArray[gridX][gridY] = newColor;
+										myPanel.repaint();
+									  
 									  state=false;
 									  System.out.println("Explosion: "+gridX+" , "+gridY);
-									  //break;
-								  }
-							}
+									  }
+										
+									  else{
+									  Color newColor = Color.GRAY;
+									  myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = newColor;
+									  myPanel.repaint();
+								  	  }
+							      }
+							
 							if(state){
-								//
+								//while state is true, game isnt over
 							}else{
-								//game over
+								//State is false, game is over
 								System.out.println("Game Over");
 								
-							}
-								
-							
-							
-							
-							Color newColor = Color.BLACK;
-							
-							
-							myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = newColor;
-							myPanel.repaint();
-						
+							}	
 					}
 				}
 			}
-			myPanel.repaint();
-			
+						
 		case 3:		//Right mouse button
 			//Do nothing
 			break;
