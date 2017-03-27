@@ -125,7 +125,7 @@ public class MyMouseAdapter extends MouseAdapter {
 									  }
 										
 									  else {
-									  Color newColor = Color.YELLOW;
+									  Color newColor = Color.BLACK;
 									  myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = newColor;
 									  myPanel.repaint();
 									  System.out.println("Explosion: "+gridX+" , "+gridY);

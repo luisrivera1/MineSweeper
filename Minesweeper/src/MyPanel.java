@@ -76,6 +76,9 @@ public class MyPanel extends JPanel {
 			}
 		}
 	}
+	//public void paint (Graphics g){
+		//g.drawString(, arg1, arg2);
+	//}
 	public int getGridX(int x, int y) {
 		Insets myInsets = getInsets();
 		int x1 = myInsets.left;
