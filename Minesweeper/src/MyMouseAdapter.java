@@ -46,7 +46,37 @@ public class MyMouseAdapter extends MouseAdapter {
 			break;
 		}
 	}
-	
+//	public checkAround(){
+//		int counter = 0;
+//		for(int i=0; i>mines.size(); i++){
+//			if(mines.get(i).getxPos()==myPanel.mouseDownGridX-1){
+//				counter++;
+//			}
+//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1){
+//				counter++;										
+//			}
+//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+//				counter++;										
+//			}
+//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+//				counter++;										
+//			}
+//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+//				counter++;										
+//			}
+//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+//				counter++;										
+//			}
+//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+//				counter++;										
+//			}
+//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+//				counter++;										
+//			}
+//			
+//		return counter;
+//		
+//	}
 	
 	public void mouseReleased(MouseEvent e) {
 		switch (e.getButton()) {
