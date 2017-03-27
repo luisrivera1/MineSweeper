@@ -6,13 +6,47 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class MyMouseAdapter extends MouseAdapter {
+	Main main = new Main();
 	boolean state=true; 
 	public boolean getState(){
 		return state;
 	}
+	MyPanel myPanel = new MyPanel();
 	ArrayList<MineCoordinates> mines = new MineCoordinates().coordinates();
+	public int minesCloseBy(ArrayList<MineCoordinates> mines){
+		int counter = 0;
+		for(int i=0; i<mines.size(); i++){
+			if(mines.get(i).getxPos()==myPanel.mouseDownGridX-1){
+				counter++;
+			}
+			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1){
+				counter++;										
+			}
+			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+				counter++;										
+			}
+			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+				counter++;										
+			}
+			if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+				counter++;										
+			}
+			if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+				counter++;										
+			}
+			if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+				counter++;										
+			}
+			if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+				counter++;	
+			}
+		}
+		System.out.println(counter);
+		return counter;
+	}
 	
 	public void mousePressed(MouseEvent e) {
 		switch (e.getButton()) {
@@ -46,37 +80,6 @@ public class MyMouseAdapter extends MouseAdapter {
 			break;
 		}
 	}
-//	public checkAround(){
-//		int counter = 0;
-//		for(int i=0; i>mines.size(); i++){
-//			if(mines.get(i).getxPos()==myPanel.mouseDownGridX-1){
-//				counter++;
-//			}
-//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1){
-//				counter++;										
-//			}
-//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
-//				counter++;										
-//			}
-//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
-//				counter++;										
-//			}
-//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
-//				counter++;										
-//			}
-//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
-//				counter++;										
-//			}
-//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
-//				counter++;										
-//			}
-//			if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
-//				counter++;										
-//			}
-//			
-//		return counter;
-//		
-//	}
 	
 	public void mouseReleased(MouseEvent e) {
 		switch (e.getButton()) {
@@ -114,58 +117,57 @@ public class MyMouseAdapter extends MouseAdapter {
 						
 						for(int a=0; a<mines.size(); a++) {
 								 
-								  if(mines.get(a).getxPos()!=gridX && mines.get(a).getyPos()!=gridY){
-									  
-									  
-									  Color newColor = Color.GRAY;
-									  myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = newColor;
-									  myPanel.repaint();
-									  
+								  if(mines.get(a).getxPos()==myPanel.mouseDownGridX && mines.get(a).getyPos()==myPanel.mouseDownGridY){									 
+									  System.out.println("Explosion: "+gridX+" , "+gridY);
+									  state = false;
 									  
 									  }
 										
 									  else {
-									  Color newColor = Color.BLACK;
-									  myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = newColor;
+									  myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.BLUE;
 									  myPanel.repaint();
-									  System.out.println("Explosion: "+gridX+" , "+gridY);
+									  minesCloseBy(mines);
 								  	  }
 							      }
 							
 							if(state){
 								//check around
-								int counter = 0;
-								for(int i=0; i>mines.size(); i++){
-									if(mines.get(i).getxPos()==myPanel.mouseDownGridX-1){
-										counter++;
-									}
-									if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1){
-										counter++;										
-									}
-									if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
-										counter++;										
-									}
-									if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
-										counter++;										
-									}
-									if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
-										counter++;										
-									}
-									if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
-										counter++;										
-									}
-									if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
-										counter++;										
-									}
-									if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
-										counter++;										
-									}
-								
-								}
+//								int counter = 0;
+//								for(int i=0; i>mines.size(); i++){
+//									if(mines.get(i).getxPos()==myPanel.mouseDownGridX-1){
+//										counter++;
+//									}
+//									if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1){
+//										counter++;										
+//									}
+//									if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+//										counter++;										
+//									}
+//									if (mines.get(i).getxPos()==myPanel.mouseDownGridX+1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+//										counter++;										
+//									}
+//									if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+//										counter++;										
+//									}
+//									if (mines.get(i).getxPos()==myPanel.mouseDownGridX-1 && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+//										counter++;										
+//									}
+//									if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY+1){
+//										counter++;										
+//									}
+//									if (mines.get(i).getxPos()==myPanel.mouseDownGridX && mines.get(i).getyPos()==myPanel.mouseDownGridY-1){
+//										counter++;										
+//									}
+//								
+//							}
 							}else{
 								//State is false, game is over
-								System.out.println("Game Over");
+								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.BLACK;
+								myPanel.repaint();
 								
+								JOptionPane.showMessageDialog(myFrame, "GameOver");
+								myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+								System.exit(0);
 							}	
 					}
 				}

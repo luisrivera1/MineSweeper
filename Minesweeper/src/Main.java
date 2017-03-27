@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 public class Main {
 	public static void main(String[] args) {
-		JFrame myFrame = new JFrame("Hey, akja;ldkjf;akjfa;lkfja;lkfjalkj");
+		JFrame myFrame = new JFrame("Anthony & Luis MineSweeper");
 		myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		myFrame.setLocation(400, 150);
 		myFrame.setSize(400, 400);
@@ -23,5 +23,13 @@ int y = rand.nextInt(9);
 		myFrame.addMouseListener(myMouseAdapter);
 
 		myFrame.setVisible(true);
+		
+		if (myMouseAdapter.getState() == false) {
+			
+			myFrame.removeMouseListener(myMouseAdapter);
+			myFrame.dispose();
+			
+			
+		}
 	}
 }

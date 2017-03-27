@@ -14,7 +14,7 @@ public class MineCoordinates {
 	public MineCoordinates (){
 		this.x=0;
 		this.y=0;
-		// This comment is for testing purposes only jajajajajajajajajaj
+		
 		}
 	
 	public MineCoordinates (int x, int y){
@@ -60,11 +60,13 @@ public class MineCoordinates {
 		return mine;	
 		
 	}
-//public void repeatedCoordinates {
+public void NearbyMines(){
 	
 	
-//}
 	
+	
+	
+}
 	
 	
 }
