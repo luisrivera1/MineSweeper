@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MineCoordinates {
+public class MineCoordinates extends MyMouseAdapter {
 	private int x;
 	private int y;
 	private int xPos;
@@ -60,6 +60,7 @@ public class MineCoordinates {
 		return mine;	
 		
 	}
+	
 
 	public void compareCoordinates (){
 		

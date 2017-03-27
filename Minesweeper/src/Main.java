@@ -10,9 +10,7 @@ public class Main {
 		myFrame.setLocation(400, 150);
 		myFrame.setSize(400, 400);
 
-Random rand = new Random();
-int x = rand.nextInt(9);
-int y = rand.nextInt(9);
+
 
 		MyPanel myPanel = new MyPanel();
 		myFrame.add(myPanel);
@@ -23,5 +21,9 @@ int y = rand.nextInt(9);
 		myFrame.addMouseListener(myMouseAdapter);
 
 		myFrame.setVisible(true);
+		if(myMouseAdapter.state==false){
+			myFrame.removeMouseListener(myMouseAdapter);
+			myFrame.dispose();
+		}
 	}
 }
