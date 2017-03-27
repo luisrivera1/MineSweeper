@@ -14,7 +14,7 @@ public class MineCoordinates {
 	public MineCoordinates (){
 		this.x=0;
 		this.y=0;
-		
+		// This comment is for testing purposes only jajajajajajajajajaj
 		}
 	
 	public MineCoordinates (int x, int y){
