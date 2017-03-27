@@ -60,12 +60,11 @@ public class MineCoordinates {
 		return mine;	
 		
 	}
-
-	public void compareCoordinates (){
-		
-		
-		
-	}
+//public void repeatedCoordinates {
+	
+	
+//}
+	
 	
 	
 }
