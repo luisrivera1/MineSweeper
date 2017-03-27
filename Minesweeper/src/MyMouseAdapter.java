@@ -16,6 +16,8 @@ public class MyMouseAdapter extends MouseAdapter {
 	}
 	MyPanel myPanel = new MyPanel();
 	ArrayList<MineCoordinates> mines = new MineCoordinates().coordinates();
+	
+	
 	public int minesCloseBy(ArrayList<MineCoordinates> mines){
 		int counter = 0;
 		for(int i=0; i<mines.size(); i++){
