@@ -14,7 +14,7 @@ public class Main {
 
 		MyPanel myPanel = new MyPanel();
 		myFrame.add(myPanel);
-		MineCoordinates c = new MineCoordinates();
+		
 
 
 		MyMouseAdapter myMouseAdapter = new MyMouseAdapter();

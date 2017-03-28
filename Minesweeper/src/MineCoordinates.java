@@ -32,7 +32,7 @@ public class MineCoordinates {
 
 	}
 	
-	public ArrayList<MineCoordinates> coordinates (){
+	public ArrayList<MineCoordinates> ScatterMinesCoordinates (){
 		
 		for (int i = 0; i < 10; i++) {
 			
