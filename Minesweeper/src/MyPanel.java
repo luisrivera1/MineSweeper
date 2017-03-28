@@ -14,9 +14,13 @@ public class MyPanel extends JPanel {
 	private static final int TOTAL_ROWS =9;   
 	public int x = -1;
 	public int y = -1;
-	public int mouseDownGridX = 0;
-	public int mouseDownGridY = 0;
+	public int mouseDownGridX;
+	public int mouseDownGridY;
+	
+	public static final int TOTAL_MINES = 10;
+	
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
+	
 	public MyPanel() {   //This is the constructor... this code runs first to initialize
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) {	//Use of "random" to prevent unwanted Eclipse warning
 			throw new RuntimeException("INNER_CELL_SIZE must be positive!");
@@ -55,7 +59,7 @@ public class MyPanel extends JPanel {
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(x1, y1, width + 1, height + 1);
 
-		
+
 		//By default, the grid will be 10x10 (see above: TOTAL_COLUMNS and TOTAL_ROWS) 
 		g.setColor(Color.BLACK);
 		for (int y = 0; y <= TOTAL_ROWS ; y++) {
@@ -75,56 +79,107 @@ public class MyPanel extends JPanel {
 				}
 			}
 		}
+	
+
+
+//	for (int x = 0; x < TOTAL_COLUMNS; x++)
+//		{
+//			for (int y = 0; y < TOTAL_ROWS; y++)
+//			{
+//				if (colorNumbers.getCounter() != 0)
+//				{
+//					
+//					if (colorNumbers.getCounter() == 1)
+//						g.setColor(Color.GREEN);
+//					
+//					else if (colorNumbers.getCounter() == 2)
+//						g.setColor(Color.BLUE);
+//				
+//					else if (colorNumbers.getCounter() == 3)
+//						g.setColor(Color.RED);
+//	
+//					else 
+//						g.setColor(Color.ORANGE);
+//					
+//					g.drawString(String.valueOf(colorNumbers.getCounter()), x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)) + 18, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)) + 25);
+//				}
+//		
+//			}
+//
+//		}
 	}
-	//public void paint (Graphics g){
-		//g.drawString(, arg1, arg2);
-	//}
-	public int getGridX(int x, int y) {
-		Insets myInsets = getInsets();
-		int x1 = myInsets.left;
-		int y1 = myInsets.top;
-		x = x - x1 - GRID_X;
-		y = y - y1 - GRID_Y;
-		if (x < 0) {   //To the left of the grid
-			return -1;
-		}
-		if (y < 0) {   //Above the grid
-			return -1;
-		}
-		if ((x % (INNER_CELL_SIZE + 1) == 0) || (y % (INNER_CELL_SIZE + 1) == 0)) {   //Coordinate is at an edge; not inside a cell
-			return -1;
-		}
-		x = x / (INNER_CELL_SIZE + 1);
-		y = y / (INNER_CELL_SIZE + 1);
-		if (x == 0 && y == TOTAL_ROWS - 1) {    //The lower left extra cell
-			return x;
-		}
-		if (x < 0 || x > TOTAL_COLUMNS-1 || y < 0 || y > TOTAL_ROWS - 1) {   //Outside the rest of the grid
-			return -1;
-		}
+
+
+
+
+public int getGridX(int x, int y) {
+	Insets myInsets = getInsets();
+	int x1 = myInsets.left;
+	int y1 = myInsets.top;
+	x = x - x1 - GRID_X;
+	y = y - y1 - GRID_Y;
+	if (x < 0) {   //To the left of the grid
+		return -1;
+	}
+	if (y < 0) {   //Above the grid
+		return -1;
+	}
+	if ((x % (INNER_CELL_SIZE + 1) == 0) || (y % (INNER_CELL_SIZE + 1) == 0)) {   //Coordinate is at an edge; not inside a cell
+		return -1;
+	}
+	x = x / (INNER_CELL_SIZE + 1);
+	y = y / (INNER_CELL_SIZE + 1);
+	if (x == 0 && y == TOTAL_ROWS - 1) {    //The lower left extra cell
 		return x;
 	}
-	public int getGridY(int x, int y) {
-		Insets myInsets = getInsets();
-		int x1 = myInsets.left;
-		int y1 = myInsets.top;
-		x = x - x1 - GRID_X;
-		y = y - y1 - GRID_Y;
-		if (x < 0) {   //To the left of the grid
-			return -1;
-		}
-		if (y < 0) {   //Above the grid
-			return -1;
-		}
-		if ((x % (INNER_CELL_SIZE + 1) == 0) || (y % (INNER_CELL_SIZE + 1) == 0)) {   //Coordinate is at an edge; not inside a cell
-			return -1;
-		}
-		x = x / (INNER_CELL_SIZE + 1);
-		y = y / (INNER_CELL_SIZE + 1);
-
-		if (x < 0 || x > TOTAL_COLUMNS - 1 || y < 0 || y > TOTAL_ROWS - 1) {   //Outside the rest of the grid
-			return -1;
-		}
-		return y;
+	if (x < 0 || x > TOTAL_COLUMNS-1 || y < 0 || y > TOTAL_ROWS - 1) {   //Outside the rest of the grid
+		return -1;
 	}
+	return x;
+}
+
+
+
+
+
+
+
+public int getGridY(int x, int y) {
+	Insets myInsets = getInsets();
+	int x1 = myInsets.left;
+	int y1 = myInsets.top;
+	x = x - x1 - GRID_X;
+	y = y - y1 - GRID_Y;
+	if (x < 0) {   //To the left of the grid
+		return -1;
+	}
+	if (y < 0) {   //Above the grid
+		return -1;
+	}
+	if ((x % (INNER_CELL_SIZE + 1) == 0) || (y % (INNER_CELL_SIZE + 1) == 0)) {   //Coordinate is at an edge; not inside a cell
+		return -1;
+	}
+	x = x / (INNER_CELL_SIZE + 1);
+	y = y / (INNER_CELL_SIZE + 1);
+
+	if (x < 0 || x > TOTAL_COLUMNS - 1 || y < 0 || y > TOTAL_ROWS - 1) {   //Outside the rest of the grid
+		return -1;
+	}
+	return y;
+}
+
+
+
+
+
+public static int getColumns(){ // Getter
+
+	return TOTAL_COLUMNS;
+
+}
+
+public static int getRows(){ // Getter
+
+	return TOTAL_ROWS;
+}
 }
