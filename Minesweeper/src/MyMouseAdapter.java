@@ -19,7 +19,7 @@ public class MyMouseAdapter extends MouseAdapter {
 	public boolean getState(){ return state;}
 	MyPanel myPanel = new MyPanel();
 
-	ArrayList<MineCoordinates> mines = new MineCoordinates().ScatterMinesCoordinates(); // Arraylist mines
+	
 
 	public void mousePressed(MouseEvent e) {
 		switch (e.getButton()) {
@@ -83,79 +83,82 @@ public class MyMouseAdapter extends MouseAdapter {
 				//Do nothing
 			} else {
 				if ((gridX == -1) || (gridY == -1)) { //outside does nothing
-				} else { 		//inside does:
+				 }else 
+				 { 		//inside does:
 
-					if ((myPanel.mouseDownGridX != gridX) || (myPanel.mouseDownGridY != gridY)) { //release on other cell
-					} else {		//Released the mouse button on the same cell where it was pressed
+//					if ((myPanel.mouseDownGridX != gridX) || (myPanel.mouseDownGridY != gridY)) { //release on other cell
+//					} else {		//Released the mouse button on the same cell where it was pressed
 
 						//functional code begins here
 						
 					    
 					    
-						for(int i=0; i<mines.size(); i++) {
+					//	for(int i=0; i<mines.size(); i++) {
 
-							if((mines.get(i).getX() == gridX) && (mines.get(i).getY() == gridY)){
-								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.BLACK;
-								myPanel.repaint();
-								System.out.println("Explosion: "+gridX+" , "+gridY);
-								JOptionPane.showMessageDialog(myFrame, "Game Over");
-								myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-								System.exit(0); 
-								state = false;
-
-							}
-
-
-							else {
-								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.LIGHT_GRAY;
+//							if((mines.get(i).getX() == gridX) && (mines.get(i).getY() == gridY)){
+//								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.BLACK;
+//								myPanel.repaint();
+//								System.out.println("Explosion: "+gridX+" , "+gridY);
+//								JOptionPane.showMessageDialog(myFrame, "Game Over");
+//								myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//								System.exit(0); 
+//								state = false;
+//
+//							}
 
 
-								if (mines.get(i).getX() == gridX+1 && mines.get(i).getY()== gridY-1){
-									counter++;
-									
-								}
-								if (mines.get(i).getX()== gridX+1 && mines.get(i).getY()==gridY+1){
-									counter++;										
-								}
-								if (mines.get(i).getX() == gridX-1 && mines.get(i).getY()==gridY+1){
-									counter++;										
-								}
-								if (mines.get(i).getX()==gridX-1 && mines.get(i).getY()==gridY-1){
-									counter++;										
-								}
-								if (mines.get(i).getX()==gridX && mines.get(i).getY()==gridY+1){
-									counter++;										
-								}
-								if (mines.get(i).getX()==gridX && mines.get(i).getY()==gridY-1){
-									counter++;	
-								}
-								if (mines.get(i).getX()+1==gridX && mines.get(i).getY()==gridY){
-									counter++;	
-								}
-								if (mines.get(i).getX()-1==gridX && mines.get(i).getY()==gridY){
-									counter++;	
-								}
+							//else {
+//								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.LIGHT_GRAY;
+//
+//
+//								if (mines.get(i).getX() == gridX+1 && mines.get(i).getY()== gridY-1){
+//									counter++;
+//									
+//								}
+//								if (mines.get(i).getX()== gridX+1 && mines.get(i).getY()==gridY+1){
+//									counter++;										
+//								}
+//								if (mines.get(i).getX() == gridX-1 && mines.get(i).getY()==gridY+1){
+//									counter++;										
+//								}
+//								if (mines.get(i).getX()==gridX-1 && mines.get(i).getY()==gridY-1){
+//									counter++;										
+//								}
+//								if (mines.get(i).getX()==gridX && mines.get(i).getY()==gridY+1){
+//									counter++;										
+//								}
+//								if (mines.get(i).getX()==gridX && mines.get(i).getY()==gridY-1){
+//									counter++;	
+//								}
+//								if (mines.get(i).getX()+1==gridX && mines.get(i).getY()==gridY){
+//									counter++;	
+//								}
+//								if (mines.get(i).getX()-1==gridX && mines.get(i).getY()==gridY){
+//									counter++;	
+//								}
 								
 								
-
-							}
-							myPanel.repaint();
-						} 
-						System.out.println(counter);
-
-						
-					}
-				}
+//
+//							}
+//							myPanel.repaint();
+//						} 
+//						System.out.println(counter);
+//
+//						
+//					}
+//				}
 			}
-
-
-		case 3:		//Right mouse button
-			//Do nothing
-			break;
-		default:    //Some other button (2 = Middle mouse button, etc.)
-			//Do nothing
-			break;
-		}	
+//
+//
+//		case 3:		//Right mouse button
+//			//Do nothing
+//			break;
+//		default:    //Some other button (2 = Middle mouse button, etc.)
+//			//Do nothing
+//			break;
+}	
+			
+		}
 	}
 	public int getCounter()
 	{
