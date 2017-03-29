@@ -52,11 +52,11 @@ public class Mines {
 		return minePositions.getPairArray();
 	}
 	public void mineExploted() {
-		JOptionPane.showMessageDialog(null,"MINE TRIGERED","YOU DIED",JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null,"MINE TRIGERED","YOU LOSE",JOptionPane.PLAIN_MESSAGE);
 	
 	}
 	public void noMineExploted() {
-		JOptionPane.showMessageDialog(null,"THE GAME IS INTACT.\n YOU WON!!!","VICTORY",JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null,"YOU WON!!!","VICTORY",JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	public int findMinesAround(MinePair minePos) {
